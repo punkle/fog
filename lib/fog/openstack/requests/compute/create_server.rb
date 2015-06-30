@@ -155,8 +155,6 @@ module Fog
             compute.volumes.get(block_device[:volume_id]).attach(server_id, block_device[:device_name])
           end
 
-          self.data[:last_modified][:servers][server_id] = Time.now
-          self.data[:servers][server_id] = mock_data
           if security_groups = options['security_groups'] then
             groups = Array(options['security_groups']).map do |sg|
               if sg.is_a?(Fog::Compute::OpenStack::SecurityGroup) then
